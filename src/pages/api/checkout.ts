@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { stripe } from '../../lib/stripe'
+import absoluteUrl from 'next-absolute-url'
+
 import { z } from 'zod'
 
 export default async function handler(
@@ -22,8 +24,10 @@ export default async function handler(
     return res.status(400).json(schema.error)
   }
 
-  const successUrl = `${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`
-  const cancelUrl = `${process.env.NEXT_URL}/`
+  const { origin } = absoluteUrl(req)
+
+  const successUrl = `${origin}/success?session_id={CHECKOUT_SESSION_ID}`
+  const cancelUrl = `${origin}/`
 
   const checkoutSession = await stripe.checkout.sessions.create({
     success_url: successUrl,
