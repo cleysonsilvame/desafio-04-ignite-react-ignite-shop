@@ -19,6 +19,7 @@ import {
   DialogClose,
 } from '../styles/providers/CartDialog'
 import axios from 'axios'
+import { CartEntry } from 'use-shopping-cart/core'
 
 export function ShoppingCartModal({ children }: { children: ReactNode }) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
@@ -33,7 +34,7 @@ export function ShoppingCartModal({ children }: { children: ReactNode }) {
     handleCartClick,
   } = useShoppingCart()
 
-  const products = Object.values(cartDetails)
+  const products: CartEntry[] = Object.values(cartDetails)
 
   const cartCountText = cartCount > 1 ? 'itens' : 'item'
 
@@ -123,7 +124,12 @@ export function ShoppingCartModal({ children }: { children: ReactNode }) {
                 <strong className='price'>{formattedTotalPrice}</strong>
               </div>
 
-              <Button onClick={handleCheckout}>Finalizar compra</Button>
+              <Button
+                onClick={handleCheckout}
+                disabled={isCreatingCheckoutSession}
+              >
+                Finalizar compra
+              </Button>
             </ProductFooter>
           </DialogContent>
         </Dialog.Portal>

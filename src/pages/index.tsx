@@ -25,7 +25,7 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
-  const { addItem, } = useShoppingCart()
+  const { addItem } = useShoppingCart()
 
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps = async () => {
         currency: 'BRL',
       }).format(price.unit_amount / 100),
       price: price.unit_amount,
-      price_id: price.id, 
+      price_id: price.id,
     }
   })
 
