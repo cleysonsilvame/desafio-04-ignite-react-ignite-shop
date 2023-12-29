@@ -8,6 +8,7 @@ import Image from 'next/future/image'
 import { CartTrigger } from '../components/CartTrigger'
 import { CartProvider } from '../providers/CartProvider'
 import { ShoppingCartModal } from '../providers/ShoppingCartModal'
+import Link from 'next/link'
 
 globalStyles()
 
@@ -17,7 +18,9 @@ function App({ Component, pageProps }: AppProps) {
       <CartProvider>
         <ShoppingCartModal>
           <Header>
-            <Image src={logoImg} alt='' />
+            <Link href='/'>
+              <Image src={logoImg} alt='' />
+            </Link>
             <CartTrigger />
           </Header>
 

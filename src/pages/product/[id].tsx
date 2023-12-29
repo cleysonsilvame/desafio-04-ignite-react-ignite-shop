@@ -1,17 +1,15 @@
-import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from 'next/future/image'
 import Head from 'next/head'
-import { useState } from 'react'
 import Stripe from 'stripe'
+import { useShoppingCart } from 'use-shopping-cart'
 import { stripe } from '../../lib/stripe'
+import { Button } from '../../styles/components/Button'
 import {
   ImageContainer,
   ProductContainer,
   ProductDetails,
 } from '../../styles/pages/product'
-import { Button } from '../../styles/components/Button'
-import { useShoppingCart } from 'use-shopping-cart'
 
 interface ProductProps {
   product: {
@@ -53,7 +51,7 @@ export default function Product({ product }: ProductProps) {
                 price: product.price,
                 image: product.imageUrl,
                 currency: 'BRL',
-                price_id: product.price_id
+                price_id: product.price_id,
               })
             }}
           >
@@ -95,7 +93,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
         }).format(price.unit_amount / 100),
         price: price.unit_amount,
         description: product.description,
-        price_id: price.id
+        price_id: price.id,
       },
     },
     revalidate: 60 * 60 * 1, // 1 hours

@@ -1,25 +1,25 @@
-import React, { ReactNode, useState } from 'react'
 import Image from 'next/image'
+import { ReactNode, useState } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
-import { X } from '@phosphor-icons/react'
+import { PiXBold } from 'react-icons/pi'
 
+import axios from 'axios'
 import { useShoppingCart } from 'use-shopping-cart'
+import { CartEntry } from 'use-shopping-cart/core'
 import { Button } from '../styles/components/Button'
 import {
-  ProductBody,
-  ProductContent,
-  ProductImage,
-  ProductInfoContent,
-  ProductFooter,
-  ProductContainer,
+  DialogClose,
   DialogContent,
   DialogTitle,
-  DialogClose,
+  ProductBody,
+  ProductContainer,
+  ProductContent,
+  ProductFooter,
+  ProductImage,
+  ProductInfoContent,
 } from '../styles/providers/CartDialog'
-import axios from 'axios'
-import { CartEntry } from 'use-shopping-cart/core'
 
 export function ShoppingCartModal({ children }: { children: ReactNode }) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
@@ -79,7 +79,7 @@ export function ShoppingCartModal({ children }: { children: ReactNode }) {
 
               <DialogClose asChild>
                 <button type='button'>
-                  <X weight='bold' size={20} />
+                  <PiXBold size={20} />
                 </button>
               </DialogClose>
 

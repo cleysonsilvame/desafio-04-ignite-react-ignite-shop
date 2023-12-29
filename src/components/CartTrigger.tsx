@@ -1,4 +1,4 @@
-import { Handbag } from '@phosphor-icons/react'
+import { PiHandbagBold } from 'react-icons/pi'
 import { CartButton } from '../styles/components/CartButton'
 import { useShoppingCart } from 'use-shopping-cart'
 
@@ -14,7 +14,7 @@ export function CartTrigger() {
       }}
     >
       <span>{cartCount}</span>
-      <Handbag size={24} weight='bold' />
+      <PiHandbagBold size={24} />
     </CartButton>
   )
 }

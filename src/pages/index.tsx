@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useKeenSlider } from 'keen-slider/react'
-import { Handbag } from '@phosphor-icons/react'
+import { PiHandbag, PiHandbagBold } from 'react-icons/pi'
 
 import { stripe } from '../lib/stripe'
 import { HomeContainer, Product } from '../styles/pages/home'
@@ -65,7 +65,7 @@ export default function Home({ products }: HomeProps) {
                     })
                   }}
                 >
-                  <Handbag size={26} weight='bold' />
+                  <PiHandbagBold size={26} />
                 </CartButton>
               </footer>
             </Product>
